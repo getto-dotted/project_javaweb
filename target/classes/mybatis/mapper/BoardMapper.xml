@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="dao.BoardDAO">
+	<select id="getTotalCount" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) FROM board where tname = #{tname}
+		<if test="searchWord!=null and !searchWord.equals('')">
+			AND ${searchColumn} LIKE '%'||#{searchWord}||'%'
+		</if>
+		<if test="startIdx!=null and !startIdx.equals('')">
+			AND idx<![CDATA[>=]]>#{startIdx}
+		</if>
+		<if test="endIdx!=null and !endIdx.equals('')">
+			AND idx<![CDATA[<=]]>#{endIdx}
+		</if>
+	</select>
+		<select id="view" resultType="dto.DTO">
+		SELECT * FROM board where idx = #{0}		
+	</select>
+	<select id="listPage" resultType="dto.DTO" parameterType="hashmap">
+		SELECT * FROM ( 
+			SELECT Tb. *, rownum rNum FROM (
+				SELECT*FROM board WHERE tname = #{tname}
+				<if test="searchWord!=null and !searchWord.equals('')">
+					AND ${searchColumn} LIKE '%'||#{searchWord}||'%'
+				</if>
+				<if test="startIdx!=null and !startIdx.equals('')">
+					AND idx<![CDATA[>=]]>#{startIdx}
+				</if>
+				<if test="endIdx!=null and !endIdx.equals('')">
+					AND idx<![CDATA[<=]]>#{endIdx}
+				</if>				
+				ORDER BY idx DESC 
+				) Tb
+			)				  
+			WHERE rNum BETWEEN #{start} AND #{end} 
+	</select>
+	<insert id="WritePage" parameterType="hashmap">
+		INSERT INTO board (idx, id, name, content, title, pass, ofile, nfile, email, tname) VALUES
+		(tseq.NEXTVAL, #{id}, #{name2}, #{content}, #{title }, #{pass2 , jdbcType=VARCHAR}, #{ofile , jdbcType=VARCHAR}, #{nfile , jdbcType=VARCHAR}, #{email2 , jdbcType=VARCHAR}, #{tname } )
+	</insert>
+	
+	<update id="edit" parameterType="hashmap">
+		UPDATE board SET 
+		
+		name =#{name2}, content=#{content} , title=#{title}, pass=#{pass2, jdbcType=VARCHAR}, ofile=#{ofile, jdbcType=VARCHAR}, nfile=#{nfile, jdbcType=VARCHAR}, email=#{email2, jdbcType=VARCHAR}
+		
+		WHERE idx=#{idx} AND id=#{id}
+	</update>
+	
+	<update id="vcnt">
+		UPDATE board SET 
+		
+		vcnt=vcnt+1
+		
+		WHERE idx=#{idx}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM board WHERE idx=#{0} AND id=#{1}
+	</delete>
+</mapper>

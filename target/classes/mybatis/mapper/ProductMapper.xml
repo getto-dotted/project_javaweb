@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="dao.ProductDAO">
+	<select id="getTotalCount" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) FROM product where 1=1
+		<if test="searchWord!=null and !searchWord.equals('')">
+			AND ${searchColumn} LIKE '%'||#{searchWord}||'%'
+		</if>
+		<if test="startIdx!=null and !startIdx.equals('')">
+			AND idx<![CDATA[>=]]>#{startIdx}
+		</if>
+		<if test="endIdx!=null and !endIdx.equals('')">
+			AND idx<![CDATA[<=]]>#{endIdx}
+		</if>
+	</select>
+		<select id="view" resultType="dto.DTO">
+		SELECT * FROM product where idx = #{0}		
+	</select>
+	
+	<select id="currval" resultType="int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES
+		WHERE SEQUENCE_NAME = 'TSEQ'
+	</select>
+	<select id="listPage" resultType="dto.DTO" parameterType="hashmap">
+		SELECT * FROM ( 
+			SELECT Tb. *, rownum rNum FROM (
+				SELECT*FROM product WHERE 1=1
+				<if test="searchWord!=null and !searchWord.equals('')">
+					AND ${searchColumn} LIKE '%'||#{searchWord}||'%'
+				</if>
+				<if test="startIdx!=null and !startIdx.equals('')">
+					AND idx<![CDATA[>=]]>#{startIdx}
+				</if>
+				<if test="endIdx!=null and !endIdx.equals('')">
+					AND idx<![CDATA[<=]]>#{endIdx}
+				</if>				
+				ORDER BY idx DESC 
+				) Tb
+			)				  
+			WHERE rNum BETWEEN #{start} AND #{end} 
+	</select>
+	<insert id="WritePage" parameterType="hashmap">
+		INSERT INTO product (idx, name, info, price, dispoint, ofile, nfile, stock, deli, dprice, etc) VALUES
+		(tseq.NEXTVAL, #{name}, #{info}, #{price}, #{dispoint }, #{ofile , jdbcType=VARCHAR}, #{nfile , jdbcType=VARCHAR}, #{stock }, #{deli, jdbcType=VARCHAR }, #{dprice, jdbcType=VARCHAR }, #{etc, jdbcType=VARCHAR } )
+	</insert>
+	
+	<update id="edit" parameterType="hashmap">
+		UPDATE product SET 
+		
+		name =#{name}, info=#{info} , price=#{price}, dispoint=#{dispoint}, 
+		ofile=#{ofile, jdbcType=VARCHAR}, nfile=#{nfile, jdbcType=VARCHAR}, stock=#{stock},
+		deli=#{deli, jdbcType=VARCHAR}, dprice=#{dprice, jdbcType=VARCHAR}, etc=#{etc, jdbcType=VARCHAR}
+		
+		WHERE idx=#{idx}
+	</update>	
+	
+	<delete id="delete">
+		DELETE FROM product WHERE idx=#{0}
+	</delete>	
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="dao.BasketDAO">
+
+	<select id="getTotalCount" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) FROM basket where id=#{id}		
+		<if test="startIdx!=null and !startIdx.equals('')">
+			AND pid<![CDATA[>=]]>#{startIdx}
+		</if>
+		<if test="endIdx!=null and !endIdx.equals('')">
+			AND pid<![CDATA[<=]]>#{endIdx}
+		</if>
+	</select>		
+	
+	<select id="listPage" resultType="dto.DTO" parameterType="hashmap">
+		SELECT * FROM ( 
+			SELECT Tb. *, rownum rNum FROM (
+				SELECT*FROM product INNER JOIN basket ON 
+				basket.idx=product.idx WHERE id=#{id}				
+				<if test="startIdx!=null and !startIdx.equals('')">
+					AND pid<![CDATA[>=]]>#{startIdx}
+				</if>
+				<if test="endIdx!=null and !endIdx.equals('')">
+					AND pid<![CDATA[<=]]>#{endIdx}
+				</if>				
+				ORDER BY pid DESC 
+				) Tb
+			)				  
+			WHERE rNum BETWEEN #{start} AND #{end} 
+	</select>
+	<insert id="WritePage" parameterType="hashmap">
+		INSERT INTO basket (pid, idx, id, bprice, onum) VALUES
+		(tseq.NEXTVAL, #{idx}, #{id}, #{bprice}, #{onum } )
+	</insert>		
+	
+	<update id="scnt">
+		UPDATE product SET 
+		
+		scnt=scnt+1
+		
+		WHERE idx=#{idx}
+	</update>
+	
+	<update id="UpdatePage" parameterType="hashmap">
+		UPDATE basket SET 
+		
+		onum=#{onum}, name=#{name, jdbcType=VARCHAR}, zipcode=#{zipcode, jdbcType=VARCHAR}, 
+		addr=#{addr, jdbcType=VARCHAR}, mobile=#{mobile, jdbcType=VARCHAR}, email=#{email, jdbcType=VARCHAR}, 
+		msg=#{msg, jdbcType=VARCHAR}, ptype=#{ptype, jdbcType=VARCHAR}
+		
+		WHERE pid=#{pid}
+	</update>
+	<update id="pay">
+		UPDATE basket SET 
+		
+		pay=1
+		
+		WHERE pid=#{pid}
+	</update>
+	<update id="conf">
+		UPDATE basket SET 
+		
+		conf=1
+		
+		WHERE pid=#{pid}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM basket WHERE pid=#{0}
+	</delete>	
+	
+	<select resultType="dto.DTO" id="order">
+		SELECT * FROM member WHERE id = #{0}
+	</select>
+</mapper>
