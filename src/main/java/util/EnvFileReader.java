@@ -32,7 +32,7 @@ public class EnvFileReader {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		ctx.close();//메모리 누수를 막기 위해 ctx객체를 종료시켜준다.
 		
 		return envStr;
 	}
