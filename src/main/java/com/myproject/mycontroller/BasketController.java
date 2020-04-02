@@ -37,7 +37,7 @@ public class BasketController {
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
-		System.out.println("@Autowired->DB연결성공");
+		System.out.println("@Autowired->BasketController");
 	}	
 	
 	public static String getUuid() {
