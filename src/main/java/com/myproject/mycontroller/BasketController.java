@@ -1,17 +1,11 @@
 package com.myproject.mycontroller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,10 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import dao.BasketDAO;
 import dto.DTO;
@@ -73,7 +63,7 @@ public class BasketController {
 		String id = (String) session.getAttribute("user_id");
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성		
-		Map file = new HashMap();		
+		Map<String, Object> file = new HashMap<String, Object>();		
 		
 		//파일외 폼값 받아오기
 		String[] idx = req.getParameterValues("idx");		
@@ -109,13 +99,13 @@ public class BasketController {
 		String id = (String) session.getAttribute("user_id");
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성		
-		Map file = new HashMap();		
+		Map<String, Object> file = new HashMap<String, Object>();		
 		
 		//파일외 폼값 받아오기
 		String[] idx = req.getParameterValues("idx");		
 		String[] bprice = req.getParameterValues("bprice");		
 		String onum = "1";		
-		String[] nowPage = req.getParameterValues("nowpage");		
+		//String[] nowPage = req.getParameterValues("nowpage");		
 				
 		for(int i=0; i<idx.length; i++) {
 			
@@ -141,7 +131,7 @@ public class BasketController {
 		}
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성		
-		Map file = new HashMap();		
+		Map<String, Object> file = new HashMap<String, Object>();		
 		
 		//파일외 폼값 받아오기
 		String[] pid = req.getParameterValues("pid");			
@@ -190,7 +180,7 @@ public class BasketController {
 		}
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성		
-		Map file = new HashMap();		
+		Map<String, Object> file = new HashMap<String, Object>();		
 		
 		//파일외 폼값 받아오기
 		String[] pid = req.getParameterValues("pid");			
@@ -225,7 +215,7 @@ public class BasketController {
 		
 		String id = (String) session.getAttribute("user_id");
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 					
 		String startIdx = req.getParameter("startIdx");
 		String endIdx = req.getParameter("endIdx");
@@ -252,7 +242,7 @@ public class BasketController {
 		int blockPage = 
 				Integer.parseInt(EnvFileReader.getValue("BasketPaging.properties", "blockPage")); 
 		//전체 페이지수 계산
-		int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
+		//int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
 		//현재 페이지번호 파라미터로 받기
 		int nowPage = req.getParameter("nowPage")==null? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		//쿼리의 start, end값 구하기
@@ -286,7 +276,7 @@ public class BasketController {
 		
 		String id = (String) session.getAttribute("user_id");
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		String startIdx = req.getParameter("startIdx");
 		String endIdx = req.getParameter("endIdx");
@@ -313,7 +303,7 @@ public class BasketController {
 		int blockPage = 
 				Integer.parseInt(EnvFileReader.getValue("BasketPaging2.properties", "blockPage")); 
 		//전체 페이지수 계산
-		int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
+		//int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
 		//현재 페이지번호 파라미터로 받기
 		int nowPage = req.getParameter("nowPage")==null? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		//쿼리의 start, end값 구하기
@@ -351,7 +341,7 @@ public class BasketController {
 		
 		String id = (String) session.getAttribute("user_id");
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		String startIdx = req.getParameter("startIdx");
 		String endIdx = req.getParameter("endIdx");
@@ -378,7 +368,7 @@ public class BasketController {
 		int blockPage = 
 				Integer.parseInt(EnvFileReader.getValue("BasketPaging2.properties", "blockPage")); 
 		//전체 페이지수 계산
-		int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
+		//int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
 		//현재 페이지번호 파라미터로 받기
 		int nowPage = req.getParameter("nowPage")==null? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		//쿼리의 start, end값 구하기
