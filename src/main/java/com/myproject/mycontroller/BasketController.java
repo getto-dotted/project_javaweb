@@ -30,7 +30,7 @@ public class BasketController {
 		System.out.println("@Autowired->BasketController");
 	}	
 	
-	public static String getUuid() {
+	public static String getUuid() {//파일 업로드시 이름을 대체할 UUID 생성 메소드
 		String uuid = UUID.randomUUID().toString();
 		System.out.println("UUID:"+uuid);
 		uuid = uuid.replaceAll("-", "");
