@@ -42,11 +42,11 @@ public class BasketController {
 	@RequestMapping("/market/basketDelete")
 	public String delete(Model model, HttpServletRequest req, HttpSession session) {
 		
-		if(session.getAttribute("user_id")==null) {
+		if(session.getAttribute("user_id")==null) {//로그인을 하지 않았을 경우 로그인을 요구한다.
 			return "redirect:/member/login";
 		}
 		
-		String pid = req.getParameter("pid");
+		String pid = req.getParameter("pid");//자신이 작성한 글만 수정/삭제가능하므로 삭제 요청이 들어올 경우 바로 삭제한다.
 		sqlSession.getMapper(BasketDAO.class).delete(pid);
 				
 		return "redirect:/market/basket";		
