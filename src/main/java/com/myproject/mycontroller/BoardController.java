@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,11 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.BoardDAO;
-import dao.MemberDAO;
 import dto.DTO;
-import mybatis.MemberVO;
-import mybatis.MyBoardDTO;
-import mybatis.MybatisDAO;
 import util.EnvFileReader;
 import util.PagingUtil;
 
@@ -53,9 +48,9 @@ public class BoardController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
-		Map param2 = new HashMap();
-		Map param3 = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
+		Map<String, Object> param2 = new HashMap<String, Object>();
+		Map<String, Object> param3 = new HashMap<String, Object>();
 				
 		int start = 1;
 		int end = 6;
@@ -113,7 +108,7 @@ public class BoardController {
 		}
 		
 		String idx = req.getParameter("idx");
-		String backURL = req.getParameter("backURL");
+		//String backURL = req.getParameter("backURL");
 		
 		ArrayList<DTO> lists = sqlSession.getMapper(BoardDAO.class).view(idx);
 		
@@ -137,8 +132,8 @@ public class BoardController {
 		String path = req.getSession().getServletContext().getRealPath("/resources/Upload");
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성
-		Map returnObj = new HashMap();
-		Map file = new HashMap();		
+		Map<String, Object> returnObj = new HashMap<String, Object>();
+		Map<String, Object> file = new HashMap<String, Object>();		
 
 		//파일외 폼값 받아오기
 		String title = req.getParameter("title");
@@ -282,8 +277,8 @@ public class BoardController {
 		String path = req.getSession().getServletContext().getRealPath("/resources/Upload");
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성
-		Map returnObj = new HashMap();
-		Map file = new HashMap();
+		Map<String, Object> returnObj = new HashMap<String, Object>();
+		Map<String, Object> file = new HashMap<String, Object>();
 		String backURL = req.getParameter("backURL");
 
 		//파일외 폼값 받아오기
@@ -372,7 +367,7 @@ public class BoardController {
 	@RequestMapping("/space/free")
 	public String freelist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "free";
@@ -446,7 +441,7 @@ public class BoardController {
 	@RequestMapping("/space/info")
 	public String infolist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "info";
@@ -592,7 +587,7 @@ public class BoardController {
 	@RequestMapping("/space/pic")
 	public String piclist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "pic";
@@ -742,7 +737,7 @@ public class BoardController {
 	@RequestMapping("/space/program")
 	public String programlist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "program";
@@ -887,7 +882,7 @@ public class BoardController {
 	@RequestMapping("/space/notice")
 	public String noticelist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "notice";
@@ -1033,7 +1028,7 @@ public class BoardController {
 	@RequestMapping("/space/crew")
 	public String crewlist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "crew";
@@ -1179,7 +1174,7 @@ public class BoardController {
 	@RequestMapping("/space/fam")
 	public String famlist(Model model, HttpServletRequest req) {
 		
-		Map param = new HashMap();
+		Map<String, Object> param = new HashMap<String, Object>();
 		
 		//테이블명 명시!!
 		String tname = "fam";
