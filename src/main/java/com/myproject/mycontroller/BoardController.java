@@ -128,7 +128,7 @@ public class BoardController {
 		String id = (String) session.getAttribute("user_id");
 		String backURL = req.getParameter("backURL");		
 		
-		//서버의 물리적경로 가져오기
+		//서버의 물리적경로 가져오기/
 		String path = req.getSession().getServletContext().getRealPath("/resources/Upload");
 		
 		//View로 전달할 데이터 저장용 맵 컬렉션 생성
