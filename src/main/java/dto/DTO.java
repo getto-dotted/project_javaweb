@@ -1,5 +1,5 @@
 package dto;
-
+//모든 데이터베이스를 다 담아올 수 있는 DTO하나에 다 때려박을 수 있다.
 public class DTO {
 	private String id;
 	private String pass;
