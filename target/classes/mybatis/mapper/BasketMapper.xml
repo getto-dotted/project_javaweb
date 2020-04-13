@@ -44,7 +44,7 @@
 		
 		WHERE idx=#{idx}
 	</update>
-	
+	<!-- null값을 넣어야 할 경우 sqlDeveloper에서는 jdbcType=VARCHAR를 표기해줘야 에러가 나지 않는다. -->
 	<update id="UpdatePage" parameterType="hashmap">
 		UPDATE basket SET 
 		
@@ -62,11 +62,7 @@
 		WHERE pid=#{pid}
 	</update>
 	<update id="conf">
-		UPDATE basket SET 
-		
-		conf=1
-		
-		WHERE pid=#{pid}
+		UPDATE basket SET conf=1 WHERE pid=#{pid}
 	</update>
 	
 	<delete id="delete">
