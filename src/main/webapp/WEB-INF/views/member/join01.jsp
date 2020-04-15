@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/global_head.jsp" %>
 <script>
+/* 체크박스 체크 */
 function agreeCheck(){
 	var f = document.agreement;
 	if(f.agreement1.checked != true){
