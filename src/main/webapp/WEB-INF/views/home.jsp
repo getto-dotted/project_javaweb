@@ -98,7 +98,7 @@ function getCookie(cookieName) {
         cookieValue = cookieData.substring(start, end);
     }
     return unescape(cookieValue);
-}
+}//삭제예정
 </script>
 </head>
 <body>
