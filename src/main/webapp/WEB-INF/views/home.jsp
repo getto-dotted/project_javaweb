@@ -99,6 +99,7 @@ function getCookie(cookieName) {
     }
     return unescape(cookieValue);
 }
+
 </script>
 </head>
 <body>
