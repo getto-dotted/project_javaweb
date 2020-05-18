@@ -1,4 +1,7 @@
 package dto;
+
+import java.sql.Timestamp;
+
 //모든 데이터베이스를 다 담아올 수 있는 DTO하나에 다 때려박을 수 있다.
 public class DTO {
 	private String id;
@@ -17,7 +20,7 @@ public class DTO {
 	private String content;
 	private String id2;
 	private int pass2;
-	private java.util.Date pday;
+	private Timestamp pday;
 	private String ofile;
 	private String nfile;
 	private int dcnt;
@@ -45,7 +48,7 @@ public class DTO {
 	private String msg;
 	private String startIdx;
 	private String endIdx;
-	private java.util.Date regidate;
+	private Timestamp regidate;
 	private String ptype;
 	
 	public String getEndIdx() {
@@ -60,7 +63,7 @@ public class DTO {
 		return regidate;
 	}
 
-	public void setRegidate(java.util.Date regidate) {
+	public void setRegidate(Timestamp regidate) {
 		this.regidate = regidate;
 	}
 
@@ -214,7 +217,7 @@ public class DTO {
 		return pday;
 	}
 
-	public void setPday(java.util.Date pday) {
+	public void setPday(Timestamp pday) {
 		this.pday = pday;
 	}
 
