@@ -3,6 +3,7 @@ package com.myproject.mycontroller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -76,15 +77,15 @@ public class BoardController {
 		ArrayList<DTO> listsP = sqlSession.getMapper(BoardDAO.class).listPage(param3);
 		
 		for(DTO dto : listsN) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		for(DTO dto : listsF) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		for(DTO dto : listsP) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}		
 		
@@ -261,7 +262,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -426,7 +427,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -500,7 +501,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -544,7 +545,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -649,7 +650,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -693,7 +694,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -796,7 +797,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -840,7 +841,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -941,7 +942,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -985,7 +986,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 
@@ -1087,7 +1088,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -1131,7 +1132,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -1233,7 +1234,7 @@ public class BoardController {
 		
 		//날짜변경
 		for(DTO dto : lists) {
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		
@@ -1277,7 +1278,7 @@ public class BoardController {
 			String temp = dto.getContent().replace("\r\n", "<br/>");
 			dto.setContent(temp);
 			
-			java.sql.Date sqlDate = new java.sql.Date(dto.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto.getPday().getTime()); 			
 			dto.setPday(sqlDate);
 		}
 		

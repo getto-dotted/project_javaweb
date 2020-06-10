@@ -2,6 +2,7 @@ package com.myproject.mycontroller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -122,7 +123,7 @@ public class ManagerController {
 		
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}
 		
@@ -207,7 +208,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}
 		//모델객체에 저장후 뷰 호출
@@ -290,7 +291,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}		
 		//모델객체에 저장후 뷰 호출
@@ -373,7 +374,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}		
 		//모델객체에 저장후 뷰 호출
@@ -456,7 +457,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}		
 		//모델객체에 저장후 뷰 호출
@@ -539,7 +540,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}		
 		//모델객체에 저장후 뷰 호출
@@ -622,7 +623,7 @@ public class ManagerController {
 		model.addAttribute("Column", searchColumn);	
 		//날짜변경
 		for(DTO dto2 : lists) {			
-			java.sql.Date sqlDate = new java.sql.Date(dto2.getPday().getTime()); 			
+			Timestamp sqlDate = new Timestamp(dto2.getPday().getTime()); 			
 			dto2.setPday(sqlDate);
 		}		
 		//모델객체에 저장후 뷰 호출
